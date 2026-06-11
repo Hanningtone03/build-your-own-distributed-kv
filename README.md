@@ -12,6 +12,8 @@ Distributed databases replicate data across multiple nodes so there is no single
 - Version numbers resolve conflicts when nodes receive out-of-order updates
 - Each node tracks its peers and replicates independently
 
+Extends the concepts from [build-your-own-redis](https://github.com/Hanningtone03/build-your-own-redis); start there to understand the single-node foundation.
+
 ## Project structure
 
 ```

@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Syntax check
+        run: node --check src/cluster.js src/node.js src/store.js src/replication.js src/http.js
+      - name: Start node and check status
+        run: |
+          node src/cluster.js 4001 &
+          sleep 2
+          curl http://localhost:4001/status
